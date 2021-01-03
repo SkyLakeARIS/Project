@@ -1,0 +1,4 @@
+#include "IEntity.h"
+/*
+	empty
+*/
