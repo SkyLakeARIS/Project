@@ -1,7 +1,4 @@
 #pragma once
-#include <iostream>
-#include <windows.h>
-#include <cstdlib>
 #include "lib.h"
 
 #define BOARD_SIZE (20)
@@ -10,40 +7,41 @@ class Board
 {
 public:
 
-    void Run();
+    Board()
+    {
+        for (int LoopY = 0; LoopY < BOARD_SIZE; LoopY++)
+        {
+            for (int LoopX = 0; LoopX < BOARD_SIZE; LoopX++)
+            {
+                mBaord[LoopY][LoopX] = eStoneType::EmptySpace;
+            }
+        }
+    }
+
+    bool CheckOmok(int x, int y, eStoneType color);
+
+    bool PlaceStone(const int x, const int y, eStoneType color);
+
+    void PrintBoard();
 
 private:
 
-    int placeStone();
+    int recurUp(int x, int y, eStoneType color);
 
-    int recurUp(int , int , eStoneType );
+    int recurDown(int x, int y, eStoneType color);
 
-    int recurDown(int, int, eStoneType);
+    int recurLeft(int x, int y, eStoneType color);
 
-    int recurLeft(int, int, eStoneType);
+    int recurRight(int x, int y, eStoneType color);
 
-    int recurRight(int, int, eStoneType);
+    int recurDiagonalUpLeft(int x, int y, eStoneType color);
 
-    int recurDiagonalUpLeft(int, int, eStoneType);
+    int recurDiagonalUpRight(int x, int y, eStoneType color);
 
-    int recurDiagonalUpRight(int, int, eStoneType);
+    int recurDiagonalDownLeft(int x, int y, eStoneType color);
 
-    int recurDiagonalDownLeft(int, int, eStoneType);
-
-    int recurDiagonalDownRight(int, int, eStoneType);
-
-    void message(eMessage);
-
-    bool checkOmok();
-
-    void settingGame();
-
-    void printBoard();
+    int recurDiagonalDownRight(int x, int y, eStoneType color);
 
 private:
     eStoneType mBaord[BOARD_SIZE][BOARD_SIZE];
-    eStoneType mStoneColor;
-    int mCursorX;
-    int mCursorY;
-    bool mbCompleteOmok;
 };

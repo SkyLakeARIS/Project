@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <windows.h>
 
 enum class eMessage
 {
@@ -10,6 +12,7 @@ enum class eMessage
     ContinueOrExit
 };
 
+
 enum class eStoneType
 {
     EmptySpace,
@@ -19,6 +22,6 @@ enum class eStoneType
 
 inline void gotoxy(int x, int y)
 {
-    COORD pos = { x,y };
+    COORD pos = {x, y};
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
